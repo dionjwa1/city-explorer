@@ -8,7 +8,8 @@ class App extends React.Component {
     this.state = {
       searchQuery: '',
       location: {},
-      error: false,
+      error: {},
+      isError: false,
     }
   }
 
@@ -16,17 +17,19 @@ class App extends React.Component {
     e.preventDefault();
     try {
       const API = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_CITY_KEY}&q=${this.state.searchQuery}&format=json`;
-      
-      const response = await axios.get(API);
 
+      const response = await axios.get(API);
       const location = response.data[0];
+
       console.log(location);
-      this.setState({
-        location
-      });
-    } catch (err) {
-      console.log(err);
-      this.setState({ error: true, errorMessage: err.message });
+      this.setState({ location:response.data[0], isError:false });
+    } catch (error) {
+      console.log(error);
+      const updatedState = {
+        error,
+        isError: true
+      }
+      this.setState(updatedState);
     }
   }
   render() {
@@ -42,10 +45,10 @@ class App extends React.Component {
         {this.state.location.place_id &&
 
           <h2>The city is: {this.state.location.display_name}</h2>}
-          
-        {this.state.location.error &&
+          {this.state.location.place_id && <h3>Latitude {this.state.location.lat}</h3>}
+          {this.state.location.place_id && <h3>Longitude {this.state.location.lon}</h3>}
 
-          <p>{this.state.errorMessage}</p>}
+        {this.state.location.error && <p>Error {this.state.errorMessage}</p>}
 
         <img src={img_url} alt="location" />
       </>
