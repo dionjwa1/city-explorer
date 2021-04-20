@@ -24,7 +24,7 @@ Estimate of time needed to complete: ____5 days_
 
 Start time: __1400___
 
-Finish time: _____
+Finish time: ___2245__
 
 Actual time needed to complete: _____
 

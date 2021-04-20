@@ -16,7 +16,7 @@ class App extends React.Component {
     e.preventDefault();
     try {
       const API = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_CITY_KEY}&q=${this.state.searchQuery}&format=json`;
-      // https://us1.locationiq.com/v1/search.php?key=YOUR_ACCESS_TOKEN&q=SEARCH_STRING&format=json
+      
       const response = await axios.get(API);
 
       const location = response.data[0];
