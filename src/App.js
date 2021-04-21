@@ -22,11 +22,14 @@ class App extends React.Component {
       const API = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_CITY_KEY}&q=${this.state.searchQuery}&format=json`;
 
       const response = await axios.get(API);
+    
       const location = response.data[0];
+
 
       const APIBE = `http://localhost:3001/weather?lat=${location.lat}&lon=${location.lon}`;
       const APIBEResoponse = await axios.get(APIBE);
       this.setState({ location: response.data[0], isError: false, weather: APIBEResoponse.data });
+
     } catch (error) {
       console.log(error);
       const updatedState = {
