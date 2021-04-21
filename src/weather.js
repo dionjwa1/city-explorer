@@ -1,12 +1,28 @@
 import React from 'react'
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+class Weather extends React.Component {
+
+  render() {
+    console.log(this.props);
+    return (
+      <>
+      {/* <Card style={{width: '18rem', color: ''}} */}
+        {this.props.weather.map((day, index) => (
+          <span key={index}>
+            <p>day: {day.time}</p>
+            <p>description: {day.forecast}</p>
+          </span>
+        )
+        )};
+      </>
+    )
+  }
+}
+
+export default Weather;
+=======
 import 'bootstrapdist/css/bootstrap.min.css';
 import ListGroup from 'react-bootstrap/ListGorup';
 
-// class Weather extends React.Component {
-
-//   render() {
-//     return (
-//       this.props.weather.map((day, idx) => ())
-//     )
-//   }
-// }

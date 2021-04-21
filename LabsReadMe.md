@@ -18,7 +18,7 @@
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 
 ## Credit and Collaborations
-Name of feature: ___City Explorer_____________________________
+Name of feature: ___City Explorer Lab 06_____________________________
 
 Estimate of time needed to complete: ____5 days_
 
@@ -30,9 +30,18 @@ Actual time needed to complete: _____
 
 
 
-Name of feature: _____________Pairing with lab 7___________________
+Name of feature: _____________Pairing with lab 07___________________
 
 Estimate of time needed to complete: 8_____
+
+Start time: ____1330_
+
+Finish time: ___2100__
+
+Actual time needed to complete: ___7.5__
+
+
+Estimate of time needed to complete: Name of feature: _____________Pairing with lab 08_____
 
 Start time: ____1330_
 

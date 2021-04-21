@@ -1,8 +1,9 @@
-import './App.css';
-import './index.css'
 import React from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
+import './App.css';
+import Weather from './weather.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +12,7 @@ class App extends React.Component {
       location: {},
       error: {},
       isError: false,
+      weather:[],
     }
   }
 
@@ -23,11 +25,11 @@ class App extends React.Component {
     
       const location = response.data[0];
 
-      const backendAPI = `http://localhost:3001/weather?lat=${location.lat}&lon=${location.lon}`
-      const serverResponse = await axios.get(backendAPI);
 
-      console.log(serverResponse);
-      this.setState({ location:response.data[0], weather:serverResponse.data, isError:false });
+      const APIBE = `http://localhost:3001/weather?lat=${location.lat}&lon=${location.lon}`;
+      const APIBEResoponse = await axios.get(APIBE);
+      this.setState({ location: response.data[0], isError: false, weather: APIBEResoponse.data });
+
     } catch (error) {
       console.log(error);
       const updatedState = {
@@ -41,7 +43,7 @@ class App extends React.Component {
 
     const img_url = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_CITY_KEY}&center=${this.state.location.lat},${this.state.location.lon}&size=${window.innerWidth}x300&format=jpg&zoom=12`;
 
-    console.log(img_url);
+    console.log(this.state.weather);
 
     return (
       <>
@@ -50,12 +52,13 @@ class App extends React.Component {
         {this.state.location.place_id &&
 
           <h2>The city is: {this.state.location.display_name}</h2>}
-          {this.state.location.place_id && <h3>Latitude {this.state.location.lat}</h3>}
-          {this.state.location.place_id && <h3>Longitude {this.state.location.lon}</h3>}
-
+        {this.state.location.place_id && <h3>Latitude {this.state.location.lat}</h3>}
+        {this.state.location.place_id && <h3>Longitude {this.state.location.lon}</h3>}
         {this.state.location.error && <p>Error {this.state.errorMessage}</p>}
-
         <img src={img_url} alt="location" />
+        <Weather weather={this.state.weather}> </Weather>
+
+        
       </>
     )
   }
