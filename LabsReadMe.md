@@ -30,12 +30,12 @@ Actual time needed to complete: _____
 
 
 
-Name of feature: ________________________________
+Name of feature: _____________Pairing with lab 7___________________
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 8_____
 
-Start time: _____
+Start time: ____1330_
 
-Finish time: _____
+Finish time: ___2100__
 
-Actual time needed to complete: _____
+Actual time needed to complete: ___7.5__
