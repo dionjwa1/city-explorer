@@ -19,10 +19,14 @@ class App extends React.Component {
       const API = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_CITY_KEY}&q=${this.state.searchQuery}&format=json`;
 
       const response = await axios.get(API);
+    
       const location = response.data[0];
 
-      console.log(location);
-      this.setState({ location:response.data[0], isError:false });
+      const backendAPI = `http://localhost:3001/weather?lat=${location.lat}&lon=${location.lon}`
+      const serverResponse = await axios.get(backendAPI);
+
+      console.log(serverResponse);
+      this.setState({ location:response.data[0], weather:serverResponse.data, isError:false });
     } catch (error) {
       console.log(error);
       const updatedState = {
