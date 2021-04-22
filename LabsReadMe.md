@@ -45,6 +45,6 @@ Estimate of time needed to complete: Name of feature: _____________Pairing with 
 
 Start time: ____1330_
 
-Finish time: ___2100__
+Finish time: _
 
-Actual time needed to complete: ___7.5__
+Actual time needed to complete: 
