@@ -36,6 +36,21 @@ class App extends React.Component {
       this.setState(({error, isError: true}));
     }
   }
+
+getMovie = async () => {
+  try {
+    const movieAPI =`${process.env.REACT_BACKEND_URL}/movies`
+    const query = {
+      cityName: this.state.searchQuery
+    };
+    const movieResponse = await axios.get(movieAPI, {params: query});
+    const movies = movieResponse.data;
+    this.setState({movies, error: false});
+  } catch (error) {
+    this.setState({ error: true});
+  }
+}
+
   render() {
 
     const img_url = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_CITY_KEY}&center=${this.state.location.lat},${this.state.location.lon}&size=${window.innerWidth}x300&format=jpg&zoom=12`;
