@@ -22,7 +22,5 @@ class Weather extends React.Component {
 }
 
 export default Weather;
-=======
-import 'bootstrapdist/css/bootstrap.min.css';
-import ListGroup from 'react-bootstrap/ListGorup';
+
 
