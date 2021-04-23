@@ -1,6 +1,5 @@
 import React from 'react'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Weather extends React.Component {
 
@@ -22,5 +21,4 @@ class Weather extends React.Component {
 }
 
 export default Weather;
-
 
