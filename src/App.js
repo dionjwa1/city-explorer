@@ -12,9 +12,12 @@ class App extends React.Component {
       location: {},
       error: {},
       isError: false,
-      weather:[],
+      weather: [],
+      movie: []
     }
   }
+
+
 
   getLocation = async (e) => {
     e.preventDefault();
@@ -23,33 +26,59 @@ class App extends React.Component {
       const API = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_CITY_KEY}&q=${this.state.searchQuery}&format=json`;
 
       const response = await axios.get(API);
-    
+
       const location = response.data[0];
-
-
-      const APIBE = `http://localhost:3001/weather?lat=${location.lat}&lon=${location.lon}`;
-      const APIBEResoponse = await axios.get(APIBE);
-      this.setState({ location: response.data[0], isError: false, weather: APIBEResoponse.data });
+      this.setState({ location, isError: false});
 
     } catch (error) {
       console.log(error);
+
+      const updatedState = {
+        error,
+        isError: true
+      }
+      this.setState(updatedState);
+      
+
       this.setState(({error, isError: true}));
+
+    }
+  this.getWeather();  
+  this.getMovies();
+
+
+  }
+
+
+  getWeather = async (e) => {
+    // e.preventDefault();
+    console.log(this.state.location);
+    try {
+      const weather = `http://localhost:3001/weather?lat=${this.state.location.lat}&lon=${this.state.location.lon}&q${this.state.location}`;
+
+      const response = await axios.get(weather);
+      this.setState({isError: false, weather: response.data });
+
+
+    } catch (error) {
+      console.log('Find Better Weather: Page not Found');
+
     }
   }
 
-getMovie = async () => {
-  try {
-    const movieAPI =`${process.env.REACT_BACKEND_URL}/movies`
-    const query = {
-      cityName: this.state.searchQuery
-    };
-    const movieResponse = await axios.get(movieAPI, {params: query});
-    const movies = movieResponse.data;
-    this.setState({movies, error: false});
-  } catch (error) {
-    this.setState({ error: true});
+  getMovies = async () => {
+    try {
+      const movies = `http://localhost:3001/movies?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&movieLocation=${this.state.searchQuery}`;
+
+      const response = await axios.get(movies);
+
+      this.setState({ movie: response.data, isError: false });
+  
+    } catch (error) {
+      console.log('Movie Error');
+    }
   }
-}
+
 
   render() {
 
@@ -70,7 +99,7 @@ getMovie = async () => {
         <img src={img_url} alt="location" />
         <Weather weather={this.state.weather}> </Weather>
 
-        
+
       </>
     )
   }
