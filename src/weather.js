@@ -4,7 +4,7 @@ import React from 'react'
 class Weather extends React.Component {
 
   render() {
-    console.log(this.props);
+   
     return (
       <>
       {/* <Card style={{width: '18rem', color: ''}} */}
