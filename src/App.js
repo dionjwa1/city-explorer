@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import './App.css';
 import Weather from './weather.js';
+import Movies from './movies.js';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -51,8 +53,6 @@ class App extends React.Component {
 
 
   getWeather = async (e) => {
-    // e.preventDefault();
-    console.log(this.state.location);
     try {
       const weather = `http://localhost:3001/weather?lat=${this.state.location.lat}&lon=${this.state.location.lon}&q${this.state.location}`;
 
@@ -98,6 +98,7 @@ class App extends React.Component {
         {this.state.isError && <p>Error {this.state.errorMessage}</p>}
         <img src={img_url} alt="location" />
         <Weather weather={this.state.weather}> </Weather>
+        <Movies movie={this.state.movie} />
 
 
       </>
