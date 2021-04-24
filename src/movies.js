@@ -22,6 +22,7 @@ class Movies extends React.Component {
 }
 export default Movies;
 
+
 //   <h2>Title: {movie.title}.</h2>
 //   <p>Overview: {movie.overview}.</p>
 //   <p>Popularity: {movie.popularity}.</p>
