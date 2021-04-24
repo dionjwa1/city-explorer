@@ -55,4 +55,9 @@ Start time: 1300
 Finish time: 
 Actual time needed to complete:
 --
-
+Name of feature:Lab 10
+Estimate of time needed to complete: ____5 Hours_
+Start time: 1300
+Finish time: 2230
+Actual time needed to complete:9.5hrs
+--

@@ -8,12 +8,11 @@ class Movies extends React.Component {
       <>
         {
           this.props.movie.map((movie, index) => (
-            <div>
+            <div key={index}>
               <h2>Title: {movie.title}.</h2>
               <p>Overview: {movie.overview}.</p>
               <p>Popularity: {movie.popularity}.</p>
-              <p>Image: https://{movie.image}.</p>
-              <p>Image: https://{movie.image}.</p>
+              <img src={movie.img_Url} alt={movie.title} />
             </div>
           ))
         }
@@ -22,6 +21,7 @@ class Movies extends React.Component {
   }
 }
 export default Movies;
+
 
 //   <h2>Title: {movie.title}.</h2>
 //   <p>Overview: {movie.overview}.</p>
