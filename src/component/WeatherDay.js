@@ -9,10 +9,10 @@ class WeatherDay extends React.Component {
    console.log(this.props.weatherSend);
     return (
  <span>
-   
-   ${this.props.weatherSend.time}
-   ${this.props.weatherSend.forecast}
-
+   <p>
+   {this.props.weatherSend.time}
+   {this.props.weatherSend.forecast}
+   </p>
  </span>
     )
   }

@@ -68,9 +68,10 @@ class App extends React.Component {
 
   getMovies = async () => {
     try {
-      const movies = `https://city-explorer-api-dion.herokuapp.com/movies?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&movieLocation=${this.state.searchQuery}`;
+      const movies = `https://city-explorer-api-dion.herokuapp.com/movies?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&location=${this.state.searchQuery}`;
 
       const response = await axios.get(movies);
+      
       this.setState({ movie: response.data, isError: false });
 
     } catch (error) {
